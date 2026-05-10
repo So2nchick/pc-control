@@ -1,0 +1,321 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#0c0c0e">
+
+    <!-- CONNECT BAR -->
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:orientation="horizontal" android:padding="12dp" android:gravity="center_vertical" android:background="#18181f">
+        <View android:id="@+id/dot" android:layout_width="10dp" android:layout_height="10dp"
+            android:background="@drawable/dot_red" android:layout_marginEnd="10dp"/>
+        <EditText android:id="@+id/ipInput" android:layout_width="0dp" android:layout_height="wrap_content"
+            android:layout_weight="1" android:hint="192.168.1.X:8765 или ngrok адрес"
+            android:textColor="#ffffff" android:textColorHint="#555566"
+            android:inputType="textNoSuggestions" android:background="@null" android:textSize="13sp"
+            android:singleLine="true" android:imeOptions="actionDone"/>
+        <Button android:id="@+id/connectBtn" android:layout_width="wrap_content" android:layout_height="36dp"
+            android:text="Подключить" android:textSize="12sp" android:backgroundTint="#7c5cfc"
+            android:textColor="#ffffff" android:paddingHorizontal="12dp"/>
+    </LinearLayout>
+
+    <TextView android:id="@+id/statusText" android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:text="Не подключено" android:textSize="11sp" android:textColor="#555566"
+        android:paddingHorizontal="14dp" android:paddingVertical="4dp" android:background="#12121a"/>
+
+    <!-- TAB BAR -->
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:orientation="horizontal" android:background="#18181f"
+        android:paddingTop="4dp" android:paddingBottom="4dp">
+        <TextView android:id="@+id/tabMedia" android:layout_width="0dp" android:layout_height="wrap_content"
+            android:layout_weight="1" android:text="▶\nМедиа" android:gravity="center"
+            android:textSize="10sp" android:textColor="#555566" android:paddingVertical="6dp"
+            android:background="@drawable/tab_selector"/>
+        <TextView android:id="@+id/tabTrackpad" android:layout_width="0dp" android:layout_height="wrap_content"
+            android:layout_weight="1" android:text="⬜\nМышь" android:gravity="center"
+            android:textSize="10sp" android:textColor="#555566" android:paddingVertical="6dp"
+            android:background="@drawable/tab_selector"/>
+        <TextView android:id="@+id/tabFiles" android:layout_width="0dp" android:layout_height="wrap_content"
+            android:layout_weight="1" android:text="📁\nФайлы" android:gravity="center"
+            android:textSize="10sp" android:textColor="#555566" android:paddingVertical="6dp"
+            android:background="@drawable/tab_selector"/>
+        <TextView android:id="@+id/tabTerminal" android:layout_width="0dp" android:layout_height="wrap_content"
+            android:layout_weight="1" android:text=">\nТерм." android:gravity="center"
+            android:textSize="10sp" android:textColor="#555566" android:paddingVertical="6dp"
+            android:background="@drawable/tab_selector"/>
+        <TextView android:id="@+id/tabSystem" android:layout_width="0dp" android:layout_height="wrap_content"
+            android:layout_weight="1" android:text="📊\nСистема" android:gravity="center"
+            android:textSize="10sp" android:textColor="#555566" android:paddingVertical="6dp"
+            android:background="@drawable/tab_selector"/>
+        <TextView android:id="@+id/tabControl" android:layout_width="0dp" android:layout_height="wrap_content"
+            android:layout_weight="1" android:text="⚡\nУпр." android:gravity="center"
+            android:textSize="10sp" android:textColor="#555566" android:paddingVertical="6dp"
+            android:background="@drawable/tab_selector"/>
+    </LinearLayout>
+
+    <!-- MAIN CONTENT (scrollable) -->
+    <ScrollView android:id="@+id/mainContent" android:layout_width="match_parent"
+        android:layout_height="0dp" android:layout_weight="1" android:fillViewport="true">
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- PAGE: MEDIA -->
+            <LinearLayout android:id="@+id/pageMedia" android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:orientation="vertical"
+                android:padding="12dp" android:visibility="gone">
+
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:orientation="vertical" android:background="#18181f"
+                    android:padding="16dp" style="@style/Card">
+                    <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+                        android:text="Медиаплеер" android:textColor="#aaaaaa" android:textSize="12sp"
+                        android:layout_marginBottom="16dp"/>
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                        android:orientation="horizontal" android:gravity="center" android:layout_marginBottom="8dp">
+                        <Button android:id="@+id/btnPrev" android:layout_width="0dp" android:layout_height="48dp"
+                            android:layout_weight="1" android:text="⏮" android:textSize="20sp"
+                            android:backgroundTint="#222230" android:textColor="#ffffff" android:layout_marginHorizontal="4dp"/>
+                        <Button android:id="@+id/btnVolDown" android:layout_width="0dp" android:layout_height="48dp"
+                            android:layout_weight="1" android:text="🔉" android:textSize="20sp"
+                            android:backgroundTint="#222230" android:textColor="#ffffff" android:layout_marginHorizontal="4dp"/>
+                        <Button android:id="@+id/btnPlayPause" android:layout_width="0dp" android:layout_height="56dp"
+                            android:layout_weight="1.3" android:text="⏯" android:textSize="24sp"
+                            android:backgroundTint="#7c5cfc" android:textColor="#ffffff" android:layout_marginHorizontal="4dp"/>
+                        <Button android:id="@+id/btnVolUp" android:layout_width="0dp" android:layout_height="48dp"
+                            android:layout_weight="1" android:text="🔊" android:textSize="20sp"
+                            android:backgroundTint="#222230" android:textColor="#ffffff" android:layout_marginHorizontal="4dp"/>
+                        <Button android:id="@+id/btnNext" android:layout_width="0dp" android:layout_height="48dp"
+                            android:layout_weight="1" android:text="⏭" android:textSize="20sp"
+                            android:backgroundTint="#222230" android:textColor="#ffffff" android:layout_marginHorizontal="4dp"/>
+                    </LinearLayout>
+                    <Button android:id="@+id/btnMute" android:layout_width="match_parent" android:layout_height="44dp"
+                        android:text="🔇 Без звука" android:backgroundTint="#222230" android:textColor="#aaaaaa"/>
+                </LinearLayout>
+
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:orientation="vertical" android:background="#18181f"
+                    android:padding="16dp" android:layout_marginTop="12dp" style="@style/Card">
+                    <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+                        android:text="Скриншот экрана" android:textColor="#aaaaaa" android:textSize="12sp"
+                        android:layout_marginBottom="10dp"/>
+                    <Button android:id="@+id/btnScreenshot" android:layout_width="match_parent"
+                        android:layout_height="48dp" android:text="📸 Сделать скриншот"
+                        android:backgroundTint="#7c5cfc" android:textColor="#ffffff"/>
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- PAGE: TRACKPAD -->
+            <LinearLayout android:id="@+id/pageTrackpad" android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:orientation="vertical"
+                android:padding="12dp" android:visibility="gone">
+
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:orientation="vertical" android:background="#18181f"
+                    android:padding="12dp" style="@style/Card">
+
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                        android:orientation="horizontal" android:gravity="center_vertical" android:layout_marginBottom="8dp">
+                        <TextView android:id="@+id/tpModeLabel" android:layout_width="0dp" android:layout_height="wrap_content"
+                            android:layout_weight="1" android:text="Режим: Курсор" android:textColor="#7c5cfc" android:textSize="13sp"/>
+                        <Button android:id="@+id/btnScrollMode" android:layout_width="wrap_content" android:layout_height="36dp"
+                            android:text="Скролл" android:textSize="12sp" android:backgroundTint="#222230" android:textColor="#aaaaaa"/>
+                    </LinearLayout>
+
+                    <View android:id="@+id/trackpadArea" android:layout_width="match_parent"
+                        android:layout_height="200dp" android:background="@drawable/trackpad_bg"/>
+
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                        android:orientation="horizontal" android:layout_marginTop="10dp">
+                        <Button android:id="@+id/btnLClick" android:layout_width="0dp" android:layout_height="48dp"
+                            android:layout_weight="1" android:text="Левая" android:backgroundTint="#222230"
+                            android:textColor="#ffffff" android:layout_marginEnd="6dp"/>
+                        <Button android:id="@+id/btnDblClick" android:layout_width="0dp" android:layout_height="48dp"
+                            android:layout_weight="1" android:text="Двойной" android:backgroundTint="#222230"
+                            android:textColor="#ffffff" android:layout_marginEnd="6dp"/>
+                        <Button android:id="@+id/btnRClick" android:layout_width="0dp" android:layout_height="48dp"
+                            android:layout_weight="1" android:text="Правая" android:backgroundTint="#222230"
+                            android:textColor="#ffffff"/>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:orientation="vertical" android:background="#18181f"
+                    android:padding="12dp" android:layout_marginTop="12dp" style="@style/Card">
+                    <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+                        android:text="Ввод текста" android:textColor="#aaaaaa" android:textSize="12sp"
+                        android:layout_marginBottom="8dp"/>
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+                        <EditText android:id="@+id/typeInput" android:layout_width="0dp" android:layout_height="wrap_content"
+                            android:layout_weight="1" android:hint="Напечатать на ПК..."
+                            android:textColor="#ffffff" android:textColorHint="#555566"
+                            android:background="@drawable/input_bg" android:padding="10dp"
+                            android:textSize="14sp" android:imeOptions="actionSend"
+                            android:layout_marginEnd="8dp"/>
+                        <Button android:id="@+id/btnSendText" android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" android:text="Отправить"
+                            android:backgroundTint="#7c5cfc" android:textColor="#ffffff"/>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:orientation="vertical" android:background="#18181f"
+                    android:padding="12dp" android:layout_marginTop="12dp" style="@style/Card">
+                    <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+                        android:text="Горячие клавиши" android:textColor="#aaaaaa" android:textSize="12sp"
+                        android:layout_marginBottom="8dp"/>
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:layout_marginBottom="8dp">
+                        <Button android:id="@+id/kbCopy" android:layout_width="0dp" android:layout_height="40dp" android:layout_weight="1" android:text="Ctrl+C" android:textSize="11sp" android:backgroundTint="#222230" android:textColor="#ffffff" android:layout_marginHorizontal="3dp"/>
+                        <Button android:id="@+id/kbPaste" android:layout_width="0dp" android:layout_height="40dp" android:layout_weight="1" android:text="Ctrl+V" android:textSize="11sp" android:backgroundTint="#222230" android:textColor="#ffffff" android:layout_marginHorizontal="3dp"/>
+                        <Button android:id="@+id/kbUndo" android:layout_width="0dp" android:layout_height="40dp" android:layout_weight="1" android:text="Ctrl+Z" android:textSize="11sp" android:backgroundTint="#222230" android:textColor="#ffffff" android:layout_marginHorizontal="3dp"/>
+                        <Button android:id="@+id/kbRedo" android:layout_width="0dp" android:layout_height="40dp" android:layout_weight="1" android:text="Ctrl+Y" android:textSize="11sp" android:backgroundTint="#222230" android:textColor="#ffffff" android:layout_marginHorizontal="3dp"/>
+                    </LinearLayout>
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:layout_marginBottom="8dp">
+                        <Button android:id="@+id/kbAltTab" android:layout_width="0dp" android:layout_height="40dp" android:layout_weight="1" android:text="Alt+Tab" android:textSize="11sp" android:backgroundTint="#222230" android:textColor="#ffffff" android:layout_marginHorizontal="3dp"/>
+                        <Button android:id="@+id/kbWinD" android:layout_width="0dp" android:layout_height="40dp" android:layout_weight="1" android:text="Win+D" android:textSize="11sp" android:backgroundTint="#222230" android:textColor="#ffffff" android:layout_marginHorizontal="3dp"/>
+                        <Button android:id="@+id/kbEsc" android:layout_width="0dp" android:layout_height="40dp" android:layout_weight="1" android:text="Esc" android:textSize="11sp" android:backgroundTint="#222230" android:textColor="#ffffff" android:layout_marginHorizontal="3dp"/>
+                        <Button android:id="@+id/kbWin" android:layout_width="0dp" android:layout_height="40dp" android:layout_weight="1" android:text="Win" android:textSize="11sp" android:backgroundTint="#222230" android:textColor="#ffffff" android:layout_marginHorizontal="3dp"/>
+                    </LinearLayout>
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal">
+                        <Button android:id="@+id/kbF11" android:layout_width="0dp" android:layout_height="40dp" android:layout_weight="1" android:text="F11" android:textSize="11sp" android:backgroundTint="#222230" android:textColor="#ffffff" android:layout_marginHorizontal="3dp"/>
+                        <Button android:id="@+id/kbWinL" android:layout_width="0dp" android:layout_height="40dp" android:layout_weight="1" android:text="Win+L" android:textSize="11sp" android:backgroundTint="#222230" android:textColor="#ffffff" android:layout_marginHorizontal="3dp"/>
+                        <Button android:id="@+id/kbTaskMgr" android:layout_width="0dp" android:layout_height="40dp" android:layout_weight="1" android:text="Диспетчер" android:textSize="10sp" android:backgroundTint="#222230" android:textColor="#ffffff" android:layout_marginHorizontal="3dp"/>
+                        <Button android:id="@+id/kbCtrlAltDel" android:layout_width="0dp" android:layout_height="40dp" android:layout_weight="1" android:text="C+A+Del" android:textSize="10sp" android:backgroundTint="#e74c3c" android:textColor="#ffffff" android:layout_marginHorizontal="3dp"/>
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- PAGE: FILES -->
+            <LinearLayout android:id="@+id/pageFiles" android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:orientation="vertical"
+                android:padding="12dp" android:visibility="gone">
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:orientation="vertical" android:background="#18181f" style="@style/Card">
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                        android:orientation="horizontal" android:padding="12dp" android:gravity="center_vertical">
+                        <TextView android:id="@+id/currentPath" android:layout_width="0dp" android:layout_height="wrap_content"
+                            android:layout_weight="1" android:text="~" android:textColor="#7c5cfc"
+                            android:textSize="12sp" android:fontFamily="monospace"/>
+                    </LinearLayout>
+                    <LinearLayout android:id="@+id/fileList" android:layout_width="match_parent"
+                        android:layout_height="wrap_content" android:orientation="vertical"/>
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- PAGE: TERMINAL -->
+            <LinearLayout android:id="@+id/pageTerminal" android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:orientation="vertical"
+                android:padding="12dp" android:visibility="gone">
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:orientation="vertical" android:background="#18181f" android:padding="12dp" style="@style/Card">
+                    <ScrollView android:layout_width="match_parent" android:layout_height="250dp">
+                        <TextView android:id="@+id/termOutput" android:layout_width="match_parent"
+                            android:layout_height="wrap_content" android:text="Введите команду...\n"
+                            android:textColor="#a0f0a0" android:textSize="12sp"
+                            android:fontFamily="monospace" android:padding="8dp"
+                            android:background="#0a0a0d"/>
+                    </ScrollView>
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                        android:orientation="horizontal" android:layout_marginTop="8dp">
+                        <EditText android:id="@+id/termInput" android:layout_width="0dp" android:layout_height="wrap_content"
+                            android:layout_weight="1" android:hint="команда..." android:textColor="#a0f0a0"
+                            android:textColorHint="#335533" android:background="@drawable/input_bg"
+                            android:padding="10dp" android:textSize="13sp" android:fontFamily="monospace"
+                            android:imeOptions="actionSend" android:layout_marginEnd="8dp"/>
+                        <Button android:id="@+id/btnRunCmd" android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" android:text="▶"
+                            android:backgroundTint="#7c5cfc" android:textColor="#ffffff"/>
+                    </LinearLayout>
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                        android:orientation="horizontal" android:layout_marginTop="8dp">
+                        <Button android:id="@+id/quickDir" android:layout_width="0dp" android:layout_height="36dp" android:layout_weight="1" android:text="dir" android:textSize="11sp" android:backgroundTint="#222230" android:textColor="#a0f0a0" android:layout_marginHorizontal="3dp"/>
+                        <Button android:id="@+id/quickIp" android:layout_width="0dp" android:layout_height="36dp" android:layout_weight="1" android:text="ipconfig" android:textSize="11sp" android:backgroundTint="#222230" android:textColor="#a0f0a0" android:layout_marginHorizontal="3dp"/>
+                        <Button android:id="@+id/quickTasklist" android:layout_width="0dp" android:layout_height="36dp" android:layout_weight="1" android:text="tasklist" android:textSize="11sp" android:backgroundTint="#222230" android:textColor="#a0f0a0" android:layout_marginHorizontal="3dp"/>
+                        <Button android:id="@+id/btnClearTerm" android:layout_width="0dp" android:layout_height="36dp" android:layout_weight="1" android:text="cls" android:textSize="11sp" android:backgroundTint="#222230" android:textColor="#a0f0a0" android:layout_marginHorizontal="3dp"/>
+                        <Button android:id="@+id/quickPing" android:layout_width="0dp" android:layout_height="36dp" android:layout_weight="1" android:text="ping" android:textSize="11sp" android:backgroundTint="#222230" android:textColor="#a0f0a0" android:layout_marginHorizontal="3dp"/>
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- PAGE: SYSTEM -->
+            <LinearLayout android:id="@+id/pageSystem" android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:orientation="vertical"
+                android:padding="12dp" android:visibility="gone">
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:orientation="horizontal" android:layout_marginBottom="10dp">
+                    <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical" android:background="#18181f" android:padding="14dp" style="@style/Card" android:layout_marginEnd="6dp">
+                        <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="CPU" android:textColor="#888896" android:textSize="11sp"/>
+                        <TextView android:id="@+id/cpuVal" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="—" android:textColor="#ffffff" android:textSize="22sp" android:fontFamily="sans-serif-medium"/>
+                        <ProgressBar android:id="@+id/cpuBar" style="?android:attr/progressBarStyleHorizontal" android:layout_width="match_parent" android:layout_height="4dp" android:max="100" android:progressTint="#7c5cfc" android:layout_marginTop="8dp"/>
+                    </LinearLayout>
+                    <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical" android:background="#18181f" android:padding="14dp" style="@style/Card" android:layout_marginStart="6dp">
+                        <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="RAM" android:textColor="#888896" android:textSize="11sp"/>
+                        <TextView android:id="@+id/ramVal" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="—" android:textColor="#ffffff" android:textSize="16sp" android:fontFamily="sans-serif-medium"/>
+                        <ProgressBar android:id="@+id/ramBar" style="?android:attr/progressBarStyleHorizontal" android:layout_width="match_parent" android:layout_height="4dp" android:max="100" android:progressTint="#2ecc71" android:layout_marginTop="8dp"/>
+                    </LinearLayout>
+                </LinearLayout>
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:orientation="horizontal" android:layout_marginBottom="10dp">
+                    <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical" android:background="#18181f" android:padding="14dp" style="@style/Card" android:layout_marginEnd="6dp">
+                        <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Диск" android:textColor="#888896" android:textSize="11sp"/>
+                        <TextView android:id="@+id/diskVal" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="—" android:textColor="#ffffff" android:textSize="22sp" android:fontFamily="sans-serif-medium"/>
+                        <ProgressBar android:id="@+id/diskBar" style="?android:attr/progressBarStyleHorizontal" android:layout_width="match_parent" android:layout_height="4dp" android:max="100" android:progressTint="#3498db" android:layout_marginTop="8dp"/>
+                    </LinearLayout>
+                    <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical" android:background="#18181f" android:padding="14dp" style="@style/Card" android:layout_marginStart="6dp">
+                        <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Сеть ↓" android:textColor="#888896" android:textSize="11sp"/>
+                        <TextView android:id="@+id/netVal" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="—" android:textColor="#ffffff" android:textSize="18sp" android:fontFamily="sans-serif-medium"/>
+                        <ProgressBar android:id="@+id/netBar" style="?android:attr/progressBarStyleHorizontal" android:layout_width="match_parent" android:layout_height="4dp" android:max="100" android:progressTint="#f39c12" android:layout_marginTop="8dp"/>
+                    </LinearLayout>
+                </LinearLayout>
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:orientation="vertical" android:background="#18181f" android:padding="12dp" style="@style/Card">
+                    <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Процессы" android:textColor="#aaaaaa" android:textSize="12sp" android:layout_marginBottom="8dp"/>
+                    <LinearLayout android:id="@+id/procList" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical"/>
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- PAGE: CONTROL -->
+            <LinearLayout android:id="@+id/pageControl" android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:orientation="vertical"
+                android:padding="12dp" android:visibility="gone">
+                <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:text="ПИТАНИЕ" android:textColor="#555566" android:textSize="11sp"
+                    android:letterSpacing="0.08" android:layout_marginBottom="8dp"/>
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:layout_marginBottom="8dp">
+                    <Button android:id="@+id/btnShutdown" android:layout_width="0dp" android:layout_height="52dp" android:layout_weight="1" android:text="⏻ Выключить" android:textSize="12sp" android:backgroundTint="#c0392b" android:textColor="#ffffff" android:layout_marginEnd="8dp"/>
+                    <Button android:id="@+id/btnRestart" android:layout_width="0dp" android:layout_height="52dp" android:layout_weight="1" android:text="↺ Перезагрузить" android:textSize="12sp" android:backgroundTint="#e67e22" android:textColor="#ffffff"/>
+                </LinearLayout>
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:layout_marginBottom="12dp">
+                    <Button android:id="@+id/btnSleep" android:layout_width="0dp" android:layout_height="52dp" android:layout_weight="1" android:text="🌙 Сон" android:textSize="12sp" android:backgroundTint="#222230" android:textColor="#ffffff" android:layout_marginEnd="8dp"/>
+                    <Button android:id="@+id/btnLock" android:layout_width="0dp" android:layout_height="52dp" android:layout_weight="1" android:text="🔒 Блокировать" android:textSize="12sp" android:backgroundTint="#222230" android:textColor="#ffffff" android:layout_marginEnd="8dp"/>
+                    <Button android:id="@+id/btnCancelShutdown" android:layout_width="0dp" android:layout_height="52dp" android:layout_weight="1" android:text="✗ Отменить выкл." android:textSize="11sp" android:backgroundTint="#222230" android:textColor="#aaaaaa"/>
+                </LinearLayout>
+
+                <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:text="ЯРКОСТЬ" android:textColor="#555566" android:textSize="11sp"
+                    android:letterSpacing="0.08" android:layout_marginBottom="8dp"/>
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:layout_marginBottom="16dp">
+                    <Button android:id="@+id/btnBrightDown" android:layout_width="0dp" android:layout_height="48dp" android:layout_weight="1" android:text="🌙 Темнее" android:textSize="12sp" android:backgroundTint="#222230" android:textColor="#ffffff" android:layout_marginEnd="8dp"/>
+                    <Button android:id="@+id/btnBrightUp" android:layout_width="0dp" android:layout_height="48dp" android:layout_weight="1" android:text="☀ Ярче" android:textSize="12sp" android:backgroundTint="#222230" android:textColor="#ffffff"/>
+                </LinearLayout>
+
+                <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:text="WAKE ON LAN — включить ПК удалённо" android:textColor="#555566"
+                    android:textSize="11sp" android:letterSpacing="0.08" android:layout_marginBottom="8dp"/>
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:orientation="horizontal" android:background="#18181f" android:padding="12dp" style="@style/Card">
+                    <EditText android:id="@+id/macInput" android:layout_width="0dp" android:layout_height="wrap_content"
+                        android:layout_weight="1" android:hint="AA:BB:CC:DD:EE:FF"
+                        android:textColor="#ffffff" android:textColorHint="#555566"
+                        android:background="@null" android:textSize="13sp" android:fontFamily="monospace"
+                        android:layout_marginEnd="10dp"/>
+                    <Button android:id="@+id/btnWol" android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:text="Включить" android:backgroundTint="#7c5cfc" android:textColor="#ffffff"
+                        android:textSize="12sp"/>
+                </LinearLayout>
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>
